@@ -1,6 +1,6 @@
 #!/usr/bin/env python
 
-def main(script_name, *vector):
+def main(*vector):
   m = len(vector)
   n = (m + 1) // 2
   v = lambda j: float(vector[j]) if 0 <= j < m else 0
@@ -51,4 +51,12 @@ def main(script_name, *vector):
 import sys
 
 if __name__ == '__main__':
-  main(*sys.argv)
+  args = sys.argv[1:]
+  if not len(args):
+    print 'Usage: %s <coefficients>' % (sys.argv[0],)
+    print
+    print 'Example:'
+    print '  %s 1 4 12 4 3' % (sys.argv[0],)
+    sys.exit(1)
+
+  main(*args)
